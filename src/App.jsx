@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import PlayerCard from "./components/PlayerCard";
+import imageUrl from "./assets/mock-avatar.jpg"
 export default function Form() {
 
   const initialValues = {
@@ -55,16 +56,19 @@ export default function Form() {
           label="Game Count"
         />
       </form>
-      <button onClick={handleButtonClick} type="submit"> Submit </button>
-      {showData && (
-        <div>
-          <h3>Form data</h3>
-          <p>{values.firstName}</p>
-          <p>{values.lastName}</p>
-          <p>{values.userName}</p>
-          <p>{values.gameCount}</p>
-        </div>
+      <button onClick={handleButtonClick} type="submit"> Add player </button>
 
+      <h3>Form data</h3>
+      {showData && (
+        <>
+          <PlayerCard
+            firstName={values.firstName}
+            lastName={values.lastName}
+            userName={values.userName}
+            gameCount={values.gameCount}
+            imageUrl={imageUrl}
+          />
+        </>
       )}
     </>
   );
