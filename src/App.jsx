@@ -13,6 +13,7 @@ function Form() {
     gameCount: "",
   });
   const [showData, setShowData] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,6 +42,7 @@ function Form() {
         handleInputChange={handleInputChange}
         handleButtonClick={handleButtonClick}
         values={values}
+        isDisabled={isDisabled}
       />
 
       <h3>Players</h3>
