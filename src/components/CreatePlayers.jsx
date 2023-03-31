@@ -1,6 +1,3 @@
-import { useState } from "react";
-
-
 const CreatePlayers = ({ players, handleInputChange, handleButtonClick, isDisabled }) => {
   const { firstName, lastName, userName, gameCount } = players;
 
