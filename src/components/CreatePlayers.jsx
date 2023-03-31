@@ -1,45 +1,77 @@
-const CreatePlayers = ({ players, handleInputChange, handleButtonClick, isDisabled }) => {
-  const { firstName, lastName, userName, gameCount } = players;
 
-  const handleDisableButton = () => {
-    return firstName && lastName && userName && gameCount ? !isDisabled : isDisabled
+import React from "react";
+import styled from "styled-components";
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1.2rem;
+  font-weight: bold;
+`;
+
+const Input = styled.input`
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  width: 100%;
+`;
+
+const Button = styled.button`
+  background-color: #0077b6;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #023e8a;
   }
+`;
 
+const FormContainer = styled.div`
+  margin: 2rem 0;
+`;
+
+function CreatePlayers({ handleInputChange, handleButtonClick }) {
   return (
-
-    <div>
-      <form>
-        <input
-          value={players.firstName}
-          onChange={handleInputChange}
-          name="firstName"
-          label="First Name"
-        />
-        <input
-          value={players.lastName}
-          onChange={handleInputChange}
-          name="lastName"
-          label="Last Name"
-        />
-
-        <input
-          value={players.userName}
-          onChange={handleInputChange}
-          name="userName"
-          label="User Name"
-        />
-        <input
-          value={players.gameCount}
-          onChange={handleInputChange}
-          name="gameCount"
-          label="Game Count"
-        />
-      </form>
-      <button className="add-player-button" onClick={handleButtonClick} type="submit" disabled={handleDisableButton()}> Add player </button>
-
-
-    </div>
-  )
+    <FormContainer>
+      <Form>
+        <Label>
+          First Name:
+          <Input type="text" name="firstName" onChange={handleInputChange} />
+        </Label>
+        <Label>
+          Last Name:
+          <Input type="text" name="lastName" onChange={handleInputChange} />
+        </Label>
+        <Label>
+          Username:
+          <Input type="text" name="userName" onChange={handleInputChange} />
+        </Label>
+        <Label>
+          Game Count:
+          <Input type="text" name="gameCount" onChange={handleInputChange} />
+        </Label>
+        <Button type="button" onClick={handleButtonClick}>
+          Add Player
+        </Button>
+      </Form>
+    </FormContainer>
+  );
 }
 
-export default CreatePlayers
+export default CreatePlayers;
+

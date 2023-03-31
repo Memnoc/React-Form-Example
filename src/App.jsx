@@ -1,61 +1,62 @@
+
 import React, { useState } from "react";
 import PlayerCard from "./components/PlayerCard";
-import imageUrl from "./assets/mock-avatar.jpg"
+import imageUrl from "./assets/mock-avatar.jpg";
 import CreatePlayers from "./components/CreatePlayers";
 
-export default function Form() {
-
-  const initialValues = {
+function Form() {
+  const [players, setPlayers] = useState([]);
+  const [values, setValues] = useState({
     firstName: "",
     lastName: "",
     userName: "",
     gameCount: "",
-  };
-
-  const [players, setValues] = useState(initialValues);
-  const [isDisabled, setIsDisabled] = useState(true);
+  });
+  const [showData, setShowData] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     setValues({
-      ...players,
+      ...values,
       [name]: value,
     });
-
   };
-
-  const [showData, setShowData] = useState(false);
 
   const handleButtonClick = () => {
-    setShowData(!showData);
+    const newPlayer = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      userName: values.userName,
+      gameCount: values.gameCount,
+      imageUrl: imageUrl,
+    };
+    setPlayers([...players, newPlayer]);
+    setShowData(true);
   };
-
 
   return (
     <>
+      <h1>Add new players</h1>
       <CreatePlayers
         handleInputChange={handleInputChange}
         handleButtonClick={handleButtonClick}
-        initialValues={initialValues}
-        players={players}
-        isDisabled={isDisabled}
-
-
+        values={values}
       />
 
-      <h3>Form data</h3>
-      {showData && (
-        <>
-          <PlayerCard
-            firstName={players.firstName}
-            lastName={players.lastName}
-            userName={players.userName}
-            gameCount={players.gameCount}
-            imageUrl={imageUrl}
-          />
-        </>
-      )}
+      <h3>Players</h3>
+      {players.map((player, index) => (
+        <PlayerCard
+          key={index}
+          firstName={player.firstName}
+          lastName={player.lastName}
+          userName={player.userName}
+          gameCount={player.gameCount}
+          imageUrl={player.imageUrl}
+        />
+      ))}
     </>
   );
 }
+
+export default Form;
+
