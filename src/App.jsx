@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import PlayerCard from "./components/PlayerCard";
 import imageUrl from "./assets/mock-avatar.jpg"
+import CreatePlayers from "./components/CreatePlayers";
+
 export default function Form() {
 
   const initialValues = {
@@ -10,62 +12,46 @@ export default function Form() {
     gameCount: "",
   };
 
-  const [values, setValues] = useState(initialValues);
-
-  const [showData, setShowData] = useState(false);
+  const [players, setValues] = useState(initialValues);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
     setValues({
-      ...values,
+      ...players,
       [name]: value,
     });
+
   };
+
+  const [showData, setShowData] = useState(false);
 
   const handleButtonClick = () => {
     setShowData(!showData);
   };
 
+
   return (
     <>
-      <form>
-        <input
-          value={values.firstName}
-          onChange={handleInputChange}
-          name="firstName"
-          label="First Name"
-        />
-        <input
-          value={values.lastName}
-          onChange={handleInputChange}
-          name="lastName"
-          label="Last Name"
-        />
+      <CreatePlayers
+        handleInputChange={handleInputChange}
+        handleButtonClick={handleButtonClick}
+        initialValues={initialValues}
+        players={players}
+        isDisabled={isDisabled}
 
-        <input
-          value={values.userName}
-          onChange={handleInputChange}
-          name="userName"
-          label="User Name"
-        />
-        <input
-          value={values.gameCount}
-          onChange={handleInputChange}
-          name="gameCount"
-          label="Game Count"
-        />
-      </form>
-      <button onClick={handleButtonClick} type="submit"> Add player </button>
+
+      />
 
       <h3>Form data</h3>
       {showData && (
         <>
           <PlayerCard
-            firstName={values.firstName}
-            lastName={values.lastName}
-            userName={values.userName}
-            gameCount={values.gameCount}
+            firstName={players.firstName}
+            lastName={players.lastName}
+            userName={players.userName}
+            gameCount={players.gameCount}
             imageUrl={imageUrl}
           />
         </>
