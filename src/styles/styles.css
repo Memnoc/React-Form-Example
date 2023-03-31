@@ -33,13 +33,13 @@
   margin-bottom: 2px;
 }
 
-/* .add-player-button { */
-/*   background: blue; */
-/*   color: white; */
-/* } */
-/* button:disabled { */
-/*   background-color: #CCCCCC; */
-/*   color: #888888; */
-/*   cursor: not-allowed; */
-/* } */
+.add-player-button {
+  background: blue;
+  color: white;
+}
+button:disabled {
+  background-color: #CCCCCC;
+  color: #888888;
+  cursor: not-allowed;
+}
 

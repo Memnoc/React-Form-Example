@@ -32,8 +32,14 @@ function Form() {
       imageUrl: imageUrl,
     };
     setPlayers([...players, newPlayer]);
-    setShowData(true);
+    setShowData(!showData);
   };
+
+  const handleButtonDisabled = () => {
+    const { firstName, lastName, userName, gameCount } = values;
+
+    return firstName && lastName && userName && gameCount ? !isDisabled : isDisabled
+  }
 
   return (
     <>
@@ -41,8 +47,7 @@ function Form() {
       <CreatePlayers
         handleInputChange={handleInputChange}
         handleButtonClick={handleButtonClick}
-        values={values}
-        isDisabled={isDisabled}
+        handleButtonDisabled={handleButtonDisabled}
       />
 
       <h3>Players</h3>
