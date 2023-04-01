@@ -3,7 +3,6 @@ import '../styles/styles.css';
 const Player = ({ firstName, lastName, userName, gameCount, imageUrl }) => {
   return (
     <>
-
       <div className="player-card">
         <img className="player-image" src={imageUrl} alt={gameCount} />
         <div className="player-info">

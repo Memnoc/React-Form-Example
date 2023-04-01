@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PlayerCard from "./components/PlayerCard";
 import imageUrl from "./assets/mock-avatar.jpg";
 import CreatePlayers from "./components/CreatePlayers";
+import _ from "lodash";
 
 function Form() {
   const [players, setPlayers] = useState([]);
@@ -31,26 +32,36 @@ function Form() {
       gameCount: values.gameCount,
       imageUrl: imageUrl,
     };
+    // Check if the new player already exists
+    checkIfUserExists(newPlayer);
     setPlayers([...players, newPlayer]);
     setShowData(!showData);
   };
 
   const handleButtonDisabled = () => {
     const { firstName, lastName, userName, gameCount } = values;
-
     return firstName && lastName && userName && gameCount ? !isDisabled : isDisabled
+  }
+
+
+  const checkIfUserExists = newPlayer => {
+    if (players.some(player => player.userName === newPlayer.userName)) {
+      alert("This player already exists!");
+      return;
+    }
+
   }
 
   return (
     <>
-      <h1>Add new players</h1>
+      <h1 className="section-title">Add new players</h1>
       <CreatePlayers
         handleInputChange={handleInputChange}
         handleButtonClick={handleButtonClick}
         handleButtonDisabled={handleButtonDisabled}
       />
 
-      <h3>Players</h3>
+      <h3 className="section-title">Players</h3>
       {players.map((player, index) => (
         <PlayerCard
           key={index}

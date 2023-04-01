@@ -43,3 +43,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
+.section-title {
+  margin: 10px;
+}
