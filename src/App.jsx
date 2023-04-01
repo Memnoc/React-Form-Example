@@ -24,7 +24,7 @@ function Form() {
     });
   };
 
-  const handleButtonClick = () => {
+  const handleCreatePlayer = () => {
     const newPlayer = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -32,7 +32,6 @@ function Form() {
       gameCount: values.gameCount,
       imageUrl: imageUrl,
     };
-    // Check if the new player already exists
     checkIfUserExists(newPlayer);
     setShowData(!showData);
   };
@@ -48,9 +47,7 @@ function Form() {
       alert("This player already exists!");
       return;
     }
-
     setPlayers([...players, newPlayer]);
-
   }
 
   return (
@@ -58,7 +55,7 @@ function Form() {
       <h1 className="section-title">Add new players</h1>
       <CreatePlayers
         handleInputChange={handleInputChange}
-        handleButtonClick={handleButtonClick}
+        handleCreatePlayer={handleCreatePlayer}
         handleButtonDisabled={handleButtonDisabled}
       />
 

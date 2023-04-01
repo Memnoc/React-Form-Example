@@ -45,7 +45,7 @@ const FormContainer = styled.div`
   margin: 2rem 0;
 `;
 
-function CreatePlayers({ handleInputChange, handleButtonClick, handleButtonDisabled }) {
+function CreatePlayers({ handleInputChange, handleCreatePlayer, handleButtonDisabled }) {
 
   return (
     <FormContainer>
@@ -66,7 +66,7 @@ function CreatePlayers({ handleInputChange, handleButtonClick, handleButtonDisab
           Game Count:
           <Input type="text" name="gameCount" onChange={handleInputChange} />
         </Label>
-        <Button type="button" onClick={handleButtonClick} disabled={handleButtonDisabled()}>
+        <Button type="button" onClick={handleCreatePlayer} disabled={handleButtonDisabled()}>
           Add Player
         </Button>
       </Form>
