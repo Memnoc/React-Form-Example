@@ -11,6 +11,7 @@ const PlayerCard = ({ firstName, lastName, userName, gameCount, imageUrl }) => {
         imageUrl={imageUrl}
       />
 
+
     </div>
   )
 }

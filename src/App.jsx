@@ -34,7 +34,6 @@ function Form() {
     };
     // Check if the new player already exists
     checkIfUserExists(newPlayer);
-    setPlayers([...players, newPlayer]);
     setShowData(!showData);
   };
 
@@ -49,6 +48,8 @@ function Form() {
       alert("This player already exists!");
       return;
     }
+
+    setPlayers([...players, newPlayer]);
 
   }
 
