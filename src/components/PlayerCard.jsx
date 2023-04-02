@@ -1,6 +1,6 @@
 import Player from "./Player"
 
-const PlayerCard = ({ firstName, lastName, userName, gameCount, imageUrl }) => {
+const PlayerCard = ({ firstName, lastName, userName, gameCount, imageUrl, player, deletePlayer }) => {
   return (
     <div>
       <Player
@@ -9,6 +9,8 @@ const PlayerCard = ({ firstName, lastName, userName, gameCount, imageUrl }) => {
         userName={userName}
         gameCount={gameCount}
         imageUrl={imageUrl}
+        player={player}
+        deletePlayer={deletePlayer}
       />
 
 

@@ -16,6 +16,10 @@ function Form() {
   const [showData, setShowData] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
 
+  const deletePlayer = passedInPlayer => {
+    setPlayers(players.filter(playerInTheList => playerInTheList.userName !== passedInPlayer.userName));
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -68,6 +72,8 @@ function Form() {
           userName={player.userName}
           gameCount={player.gameCount}
           imageUrl={player.imageUrl}
+          player={player}
+          deletePlayer={deletePlayer}
         />
       ))}
     </>
