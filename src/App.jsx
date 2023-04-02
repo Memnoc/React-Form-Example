@@ -11,7 +11,7 @@ function Form() {
     firstName: "",
     lastName: "",
     userName: "",
-    gameCount: 0,
+    gameCount: "0",
   });
   const [showData, setShowData] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
