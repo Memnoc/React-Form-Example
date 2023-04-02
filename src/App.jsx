@@ -11,7 +11,7 @@ function Form() {
     firstName: "",
     lastName: "",
     userName: "",
-    gameCount: "",
+    gameCount: 0,
   });
   const [showData, setShowData] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -41,8 +41,8 @@ function Form() {
   };
 
   const handleButtonDisabled = () => {
-    const { firstName, lastName, userName, gameCount } = values;
-    return firstName && lastName && userName && gameCount ? !isDisabled : isDisabled
+    const { firstName, lastName, userName } = values;
+    return firstName && lastName && userName ? !isDisabled : isDisabled
   }
 
 
