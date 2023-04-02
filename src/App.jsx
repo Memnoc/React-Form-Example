@@ -22,20 +22,18 @@ function Form() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
+    setFormValues((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
   const handleCreatePlayer = () => {
     const newPlayer = {
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      userName: formValues.userName,
-      gameCount: formValues.gameCount,
-      imageUrl: imageUrl,
+      ...formValues,
+      imageUrl,
     };
+
     checkIfUserExists(newPlayer);
     setShowData(!showData);
   };
@@ -51,7 +49,7 @@ function Form() {
       alert("This player already exists!");
       return;
     }
-    setPlayers([...players, newPlayer]);
+    setPlayers((prevState) => [...prevState, newPlayer]);
   }
 
   return (
