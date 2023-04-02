@@ -7,7 +7,7 @@ import _ from "lodash";
 
 function Form() {
   const [players, setPlayers] = useState([]);
-  const [values, setValues] = useState({
+  const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
     userName: "",
@@ -22,18 +22,18 @@ function Form() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setValues({
-      ...values,
+    setFormValues({
+      ...formValues,
       [name]: value,
     });
   };
 
   const handleCreatePlayer = () => {
     const newPlayer = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      userName: values.userName,
-      gameCount: values.gameCount,
+      firstName: formValues.firstName,
+      lastName: formValues.lastName,
+      userName: formValues.userName,
+      gameCount: formValues.gameCount,
       imageUrl: imageUrl,
     };
     checkIfUserExists(newPlayer);
@@ -41,7 +41,7 @@ function Form() {
   };
 
   const handleButtonDisabled = () => {
-    const { firstName, lastName, userName } = values;
+    const { firstName, lastName, userName } = formValues;
     return firstName && lastName && userName ? !isDisabled : isDisabled
   }
 
